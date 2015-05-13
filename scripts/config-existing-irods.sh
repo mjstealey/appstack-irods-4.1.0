@@ -51,18 +51,18 @@ fi
 #############
 # Permissions
 #############
-chown -R $MYACCTNAME:$MYGROUPNAME $IRODS_HOME_DIR
-chown -R $MYACCTNAME:$MYGROUPNAME /etc/irods
+chown -R ${MYACCTNAME}:${MYGROUPNAME} ${IRODS_HOME_DIR}
+chown -R ${MYACCTNAME}:${MYGROUPNAME} /etc/irods
 
 # set permissions on iRODS authentication mechanisms
-chmod 4755 $IRODS_HOME_DIR/iRODS/server/bin/PamAuthCheck
+chmod 4755 ${IRODS_HOME_DIR}/iRODS/server/bin/PamAuthCheck
 chmod 4755 /usr/bin/genOSAuth
 
 # start iRODS server as user irods
 su irods <<'EOF'
 sed -i 's/"irods_host".*/"irods_host": "localhost",/g' /var/lib/irods/.irods/irods_environment.json
 /var/lib/irods/iRODS/irodsctl restart
-iadmin modresc `ilsresc` host `hostname`
+while read line; do iadmin modresc ${line} host `hostname`; done < <(ilsresc)
 EOF
 
 # Keep container in a running state
