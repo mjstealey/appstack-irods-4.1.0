@@ -25,8 +25,8 @@ RUN /sbin/chkconfig --level=3 auth on
 RUN /etc/init.d/xinetd restart
 
 # Install iRODS RPMs - uncomment packages as required
-ADD irodsrpms /RPMs
-WORKDIR /RPMs
+ADD files /files
+WORKDIR /files
 # get iRODS rpm files
 RUN sh get-irods-rpms.sh
 # Install irods-icat
