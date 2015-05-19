@@ -7,7 +7,6 @@ SERVICE_ACCOUNT_CONFIG_FILE="/etc/irods/service_account.config"
 IRODS_HOME_DIR="/var/lib/irods"
 
 # Get environment variables from iRODS setup
-while read line; do export $line; done < <(cat /root/.secret/secrets.sh)
 while read line; do export $line; done < <(cat ${SERVICE_ACCOUNT_CONFIG_FILE})
 
 # get service account name
