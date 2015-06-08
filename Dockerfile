@@ -33,12 +33,6 @@ RUN sh get-irods-rpms.sh
 RUN rpm -i $(ls -l | tr -s ' ' | grep irods-icat | cut -d ' ' -f 9)
 # Install irods-database-plugin
 RUN rpm -i $(ls -l | tr -s ' ' | grep irods-database-plugin | cut -d ' ' -f 9)
-# Install irods-dev
-RUN rpm -i $(ls -l | tr -s ' ' | grep irods-dev | cut -d ' ' -f 9)
-# Install irods-runtime
-RUN rpm -i $(ls -l | tr -s ' ' | grep irods-runtime | cut -d ' ' -f 9)
-# Install irods-microservice-plugins
-RUN rpm -i $(ls -l | tr -s ' ' | grep irods-microservice-plugins | cut -d ' ' -f 9)
 
 ADD scripts /scripts
 WORKDIR /scripts

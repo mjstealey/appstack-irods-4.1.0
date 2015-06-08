@@ -64,5 +64,12 @@ sed -i 's/"irods_host".*/"irods_host": "localhost",/g' /var/lib/irods/.irods/iro
 while read line; do iadmin modresc ${line} host `hostname`; done < <(ilsresc)
 EOF
 
+# OPTIONAL: Install irods-dev
+#rpm -i $(ls -l | tr -s ' ' | grep irods-dev | cut -d ' ' -f 9)
+# Install irods-runtime
+#rpm -i $(ls -l | tr -s ' ' | grep irods-runtime | cut -d ' ' -f 9)
+# Install irods-microservice-plugins
+#rpm -i $(ls -l | tr -s ' ' | grep irods-microservice-plugins | cut -d ' ' -f 9)
+
 # Keep container in a running state
 /usr/bin/tail -f /dev/null
